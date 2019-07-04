@@ -74,7 +74,7 @@ void main(){
         if(joypad() & J_LEFT){
            bloc.x -= 8;
            movegamecharacter(&bloc, bloc.x, bloc.y);
-           delay(1000);
+           delay(2);
        }
        if(joypad() & J_RIGHT){
            bloc.x += 8;
