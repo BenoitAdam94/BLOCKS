@@ -17,7 +17,7 @@ void movegamecharacter(struct GameCharacter* character, UINT8 x, UINT8 y){
     move_sprite(character->spritids[3], x + spritesize, y + spritesize);
 }
 
-void performantdelay(UINT8 numloops){
+void performantdelay(UINT8 numloops){         // usage = performantdelay(128);
     UINT8 i;
     for(i = 0; i < numloops; i++){
         wait_vbl_done();
@@ -77,28 +77,25 @@ void main(){
     
     while (bottom == 0){
         keys = joypad();
+
         if (frame_skip == 0) {
             if(keys & J_LEFT && !(prev_keys & J_LEFT)){
                 bloc.x -= 8;
-                movegamecharacter(&bloc, bloc.x, bloc.y);
             }
                
             if(keys & J_RIGHT && !(prev_keys & J_RIGHT)){
                 bloc.x += 8;
-                movegamecharacter(&bloc, bloc.x, bloc.y);
             }
-            frame_skip = 10;
+            bloc.y += 8;
+            frame_skip = 16;
         }
         else{
             frame_skip -= 1;
-            // printf("%u\n",(UINT8)(frame_skip)); // Debug Only
         }
-        wait_vbl_done();
-        prev_keys = keys;
-        bloc.y += 4;
-
-        // performantdelay(1);
+        prev_keys = keys;    
         movegamecharacter(&bloc,bloc.x,bloc.y);
+
+        wait_vbl_done();
 
         if(bloc.y >= 144){
         bottom = 1;
