@@ -237,7 +237,7 @@ void main(){
                     sound_rotate();
                     break;
                 case J_LEFT :
-                    if(canplayermove(bloc.x-16,bloc.y)){ //hitbox is the top-right tile of the bloc
+                    if(canplayermove(bloc.x-16,bloc.y)){
                         bloc.x -= 8;
                         sound_blocmove();
                     }
