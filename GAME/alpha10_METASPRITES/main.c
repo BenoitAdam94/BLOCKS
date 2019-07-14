@@ -58,7 +58,7 @@ void setupbloc(){
     movethebloc(&bloc, bloc.x, bloc.y);
 }
 
-/* Displaying a BAR */
+/* Displaying a BAR **Not used yet** */
 
 void setupbar(){
     bloc.x = 64;
