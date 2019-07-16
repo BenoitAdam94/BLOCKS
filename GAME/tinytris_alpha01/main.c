@@ -59,9 +59,10 @@ void setupnext(){ // Displays the NEXT PIECE
 
 
 
+
 UBYTE canplayermove(UINT8 newplayerx, UINT8 newplayery){ // Collision detection
     UINT16 tileindexTL;
-    UINT8 indexTLy, indexTLx, result;
+    UINT8 indexTLy, indexTLx, result, get_tile;
 
     indexTLx = (newplayerx - xoffset) / 8;
     indexTLy = (newplayery - yoffset) / 8;
@@ -71,14 +72,13 @@ UBYTE canplayermove(UINT8 newplayerx, UINT8 newplayery){ // Collision detection
     
     // printf("newplayerx %u %u\n",(UINT16)(newplayerx),(UINT16)(newplayery)); //printf("%u %u %u\n\n",(UINT16)indexTLx,(UINT16)indexTLy,(UINT16)tileindexTL);  
     // delay(128);
-
-    result = game_bkg[tileindexTL] == blankmap;
-
-    // printf("%u\n",(UINT16)game_bkg[tileindexTL]); printf("%u\n",(UINT16)result);
-    // delay(1024);
+    
+    get_bkg_tiles(indexTLx, indexTLy, 1, 1, &get_tile);
+    result = get_tile == blankmap;
 
     return result;
 }
+
 
 
 
